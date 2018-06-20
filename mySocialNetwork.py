@@ -2,6 +2,9 @@
 import sys
 import optparse
 
+print("MySpace 2.0")
+print("")
+
 class User:
     def __init__(self,userName):
         self.userName = userName
@@ -17,7 +20,10 @@ class User:
 
     def viewFeed(self):
         for friend in self.friends:
+            print("")
+            print(friend.userName)
             print(friend.posts)
+            print("")
 
     def addPost(self, post):
         self.posts.append(post)
@@ -37,7 +43,7 @@ class User:
         print("friends:")
         self.viewFriends()
         print("")
-        print("my posts:")
+        print("posts:")
         print(self.posts)
         
         
@@ -45,29 +51,45 @@ if __name__ == "__main__":
     
     Angel = User("intergalactor_")
     ham = User("THE_hamburgler")
-    doe = User("$$$DoeDoppler$$$") 
+    doe = User("DoeDoppler") 
 
     Angel.addFriend(ham)
     Angel.addFriend(doe)
+    doe.addFriend(Angel)
+    doe.addFriend(ham)
+    ham.addFriend(Angel)
+    ham.addFriend(doe)
 
     ham.addPost("this is library")
+    ham.addPost("ESSSSKEEEETTTIIIIITTTT")
+
     doe.addPost("hellllloooo")
+    doe.addPost("youngest flexa of all time")
+
     Angel.addPost("this isss myyyyy post")
     Angel.addPost("this is another post. awesome")
 
-    parser = optparse.OptionParser()
+parser = optparse.OptionParser()
 parser.add_option('-n', '--name', dest='name', help='Your Name')
 
 (options, args) = parser.parse_args()
 
 if options.name is None:
-    options.name = input('profile? Or, newsfeed?:')
+    options.name = input('profile? newsfeed? OR friends?:')
 
 if options.name == ("profile"):
     sayOption = Angel.viewMyProfile()
 elif options.name == ("newsfeed"):
     sayOption = Angel.viewFeed()
-##elif options.name == ("see friends"):
-##    sayOption = Angel.viewFeed()
-    
+elif options.name == ("friends"):
+    sayOption = Angel.viewFriends()
+
+
+
+
+
+
+
+
+
     
