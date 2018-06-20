@@ -1,5 +1,4 @@
 ##social network##
-import sys
 import optparse
 
 print("MySpace 2.0")
@@ -14,6 +13,12 @@ class User:
         self.userId = ""
         self.friends = []
         self.posts = []
+
+##class POST:
+##    def __init__(self, postContent):
+##        self.postContent = postContent
+##        self.postId = ""
+##        self.commnets = []
     
     def addFriend(self, obj):
         self.friends.append(obj)
@@ -88,8 +93,7 @@ elif options.name == ("friends"):
 
 
 
-
-
+       
 
 
     
